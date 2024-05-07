@@ -1,0 +1,48 @@
+:root {
+  --color-dark: #2a2c3a;
+  --color-default: #2d3040;
+  --color-bg: #252633;
+  --color-green: #66cc66;
+  --color-dark-blue: rgb(78,147,206);
+  --color--blue: rgb(95,178,248);
+  --color-light-green: #9ce19c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--color-bg);
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  color: white;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/InterVAR.ttf");
+  font-weight: 100 900;
+}
+
+input {
+  font-family: "Inter", sans-serif;
+  outline: none;
+  border: none;
+}
+
+input::file-selector-button {
+  color: white;
+  font-weight: 700;
+  background-color: #66cc66;
+  cursor: pointer;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 50px;
+}

@@ -1,0 +1,12 @@
+.LandingPage {
+  display: flex;
+  padding: 18px;
+  &Tree {
+    padding: 18px 48px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 18px;
+    white-space: pre;
+    background-color: var(--color-default);
+  }
+}
