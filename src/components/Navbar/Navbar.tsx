@@ -9,10 +9,7 @@ const Navbar = () => {
             <Link to="/"><img src={logo} alt="Logo"/></Link>
             <ul>
                 <li>
-                    <Link to="/file-comparison">File Comparison</Link>
-                </li>
-                <li>
-                    <Link to="/gxt2">GXT2</Link>
+                    <Link to="/aufgabe-1">Aufgabe 1</Link>
                 </li>
             </ul>
         </nav>

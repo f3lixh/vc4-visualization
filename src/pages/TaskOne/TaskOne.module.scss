@@ -1,0 +1,33 @@
+.TaskOne {
+  display: grid;
+  grid-template-columns: 300px auto;
+  padding: 18px;
+  &Active {
+    text-decoration: unset !important;
+    background: #66cc66;
+  }
+  &List {
+    flex-direction: column;
+    display: flex;
+    gap: 24px;
+    padding-right: 64px;
+  a {
+      padding: 12px 32px;
+    text-align: center;
+    font-size: 18px ;
+    border: 2px solid var(--color-green);
+    border-radius: 50px ;
+    }
+  }
+  &Chart {
+    padding: 24px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  &Canvas {
+    height: 500px;
+    width: 500px;
+  }
+}
