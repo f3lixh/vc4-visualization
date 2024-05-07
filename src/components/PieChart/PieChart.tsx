@@ -17,8 +17,8 @@ const PieChart: React.FC<PieChartProps> = ({ label1, value1, label2, value2 }) =
                 data: [value1, value2],
                 backgroundColor: ['#ff6384', '#36a2eb'],
                 hoverBackgroundColor: ['#ff6384', '#36a2eb'],
-                borderColor: '#ffffff',  // Farbe der Border, weiß wie bisher
-                borderWidth: 1,  // Dicke der Border, reduziert von 2 oder mehr zu 1
+                borderColor: '#ffffff',
+                borderWidth: 1,
             }
         ]
     };
@@ -26,9 +26,11 @@ const PieChart: React.FC<PieChartProps> = ({ label1, value1, label2, value2 }) =
     const options = {
         plugins: {
             legend: {
+                reverse: true,
                 display: true,
+                position: "bottom",
                 labels: {
-                    position: "bottom",
+                    padding: 24,
                     color: "white",
                     font: {
                         size: 24
@@ -46,6 +48,7 @@ const PieChart: React.FC<PieChartProps> = ({ label1, value1, label2, value2 }) =
         }
     };
 
+    // @ts-ignore
     return <Pie data={data} options={options} />;
 }
 

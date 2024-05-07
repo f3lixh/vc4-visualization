@@ -11,19 +11,19 @@ const TaskOne = () => {
                    to="/aufgabe-1/teil-1"
                    className={({ isActive }) => isActive ? styles.TaskOneActive : undefined}
                >
-                   Paygap
+                   Frauenanteil
                </NavLink>
                <NavLink
                    to="/aufgabe-1/teil-2"
                    className={({ isActive }) => isActive ? styles.TaskOneActive : undefined}
                >
-                   Neuzulassungen
+                   Inflationsrate
                </NavLink>
                <NavLink
                    to="/aufgabe-1/teil-3"
                    className={({ isActive }) => isActive ? styles.TaskOneActive : undefined}
                >
-                   Irgendwas
+                   Videospielindustrie
                </NavLink>
            </div>
             <div className={classNames(styles.TaskOneChart)}>

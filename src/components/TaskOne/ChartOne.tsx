@@ -1,10 +1,14 @@
 import React from "react";
 import PieChart from "../../components/PieChart/PieChart";
+import BarChart from "../BarChart/BarChart";
 
 const ChartOne = () => {
     return (
         <>
-            <PieChart label1="Wert Luk" value1={30} label2="Wert asdasds" value2={70} />
+            <h1>Anteil von Frauen in technischen Berufen (Deutschland)</h1>
+            <br/>
+            <br/>
+            <BarChart label1="Frauen" value1={22} label2="Männer" value2={78} />
         </>
     );
 };
