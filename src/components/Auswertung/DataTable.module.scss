@@ -1,0 +1,43 @@
+.DataTable {
+
+  &Img {
+    border-radius: 8px;
+    background-color: #2a2c3a;
+    padding: 24px;
+    img {
+      max-height: 50vh;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  padding: 12px;
+  display: flex;
+  gap: 24px;
+  th {
+    font-size: 24px;
+  }
+  th:nth-child(1) {
+    text-align: left;
+  }
+  td, th {
+    padding: 12px 32px;
+  }
+  table {
+    border-radius: 8px;
+    background-color: #2a2c3a;
+  }
+  tbody {
+    tr:nth-child(odd) {
+      background-color: #2d3040;
+    }
+    tr:hover {
+      background-color: #66cc66;
+      cursor: pointer;
+    }
+  }
+}
+
+.activeRow {
+  background-color: #66cc66 !important;
+}

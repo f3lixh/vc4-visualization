@@ -24,6 +24,14 @@ const Navbar = () => {
                         Präattentive Verarbeitung
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink
+                        to="/auswertung-2"
+                        className={({ isActive }) => isActive ? styles.active : ''}
+                    >
+                        Auswertung 2
+                    </NavLink>
+                </li>
             </ul>
         </nav>
     );
