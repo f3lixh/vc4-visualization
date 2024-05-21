@@ -5,6 +5,7 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import TaskOne from "./pages/TaskOne/TaskOne";
+import TaskTwo from "./pages/TaskTwo/TaskTwo";
 import ChartOne from "./components/TaskOne/ChartOne";
 import ChartTwo from "./components/TaskOne/ChartTwo";
 import ChartThree from "./components/TaskOne/ChartThree";
@@ -22,6 +23,8 @@ function App() {
                             <Route path="teil-1" element={<ChartOne />} />
                             <Route path="teil-2" element={<ChartTwo />} />
                             <Route path="teil-3" element={<ChartThree />} />
+                        </Route>
+                        <Route path="aufgabe-2" element={<TaskTwo />}>
                         </Route>
                     </Route>
                 </Routes>

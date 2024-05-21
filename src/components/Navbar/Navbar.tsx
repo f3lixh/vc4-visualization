@@ -8,8 +8,11 @@ const Navbar = () => {
         <nav className={styles.Navbar}>
             <Link to="/"><img src={logo} alt="Logo"/></Link>
             <ul>
+                <li><Link to="/aufgabe-1">Aufgabe 1</Link>
+
+                </li>
                 <li>
-                    <Link to="/aufgabe-1">Aufgabe 1</Link>
+                    <Link to="/aufgabe-2">Aufgabe 2</Link>
                 </li>
             </ul>
         </nav>

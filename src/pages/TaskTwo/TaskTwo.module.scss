@@ -1,0 +1,35 @@
+.TaskTwo {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  padding: 18px;
+  gap: 24px;
+  &Rules {
+  display: flex;
+  flex-direction: column;
+  }
+
+  &Img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    background-color: #2d3040;
+    border: #66cc66 solid 2px;
+    border-radius: 50px;
+    max-height: calc(100vh - 250px);
+  }
+
+  &Button {
+    cursor: pointer;
+    all: unset;
+    text-align: center;
+    padding: 12px;
+    border-radius: 500px;
+    border: #66cc66 solid 2px;
+    &:hover {
+      cursor: pointer;
+
+      background-color: #66cc66;
+    }
+  }
+}
