@@ -7,14 +7,15 @@ interface Props {
     task: string;
     index: number;
     state: number;
+    cooldown: number;
     onChange: (n: number) => void;
 }
 
 const INITIAL_COUNTDOWN = 5;
 
-const ImgViewTimer: React.FC<Props> = ({ img, task, index, state, onChange }) => {
+const ImgViewTimer: React.FC<Props> = ({ img, task, index, state, onChange, cooldown }) => {
     const [visible, setVisible] = useState(false);
-    const [countdown, setCountdown] = useState(INITIAL_COUNTDOWN);
+    const [countdown, setCountdown] = useState(cooldown);
 
     const [startReaction, setStartReaction] = useState(0);
     const [endReaction, setEndReaction] = useState(0);
@@ -23,21 +24,21 @@ const ImgViewTimer: React.FC<Props> = ({ img, task, index, state, onChange }) =>
     useEffect(() => {
         if (state === index) {
             setVisible(false);
-            setCountdown(INITIAL_COUNTDOWN);
+            setCountdown(cooldown);
             const timer = setInterval(() => {
                 setCountdown((prev) => prev - 1);
             }, 1000);
             const timeout = setTimeout(() => {
                 clearInterval(timer);
                 setVisible(true);
-            }, INITIAL_COUNTDOWN * 1000);
+            }, cooldown * 1000);
             return () => {
                 clearInterval(timer);
                 clearTimeout(timeout);
             };
         } else {
             setVisible(false);
-            setCountdown(INITIAL_COUNTDOWN);
+            setCountdown(cooldown);
         }
     }, [state, index]);
 
@@ -76,7 +77,6 @@ const ImgViewTimer: React.FC<Props> = ({ img, task, index, state, onChange }) =>
                 <span>{countdown}</span>
             </div>}
             <img className={classNames(styles.ImgTimerViewImg, visible && styles.ImgTimerViewImgActive)} src={img} alt={task} />
-            <div className={styles.ImgTimerViewTask}>{finalReaction}</div>
         </div>
     );
 };

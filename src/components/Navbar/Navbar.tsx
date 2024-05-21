@@ -1,21 +1,32 @@
-import {Link} from "react-router-dom";
-import styles from "./Navbar.module.scss"
+import { NavLink } from "react-router-dom";
+import styles from "./Navbar.module.scss";
 import React from "react";
-import logo from "../../img/logo.svg"
+import logo from "../../img/logo.svg";
 
 const Navbar = () => {
     return (
         <nav className={styles.Navbar}>
-            <Link to="/"><img src={logo} alt="Logo"/></Link>
+            <NavLink to="/"><img src={logo} alt="Logo"/></NavLink>
             <ul>
-                <li><Link to="/aufgabe-1">Aufgabe 1</Link>
-
+                <li>
+                    <NavLink
+                        to="/aufgabe-1"
+                        className={({ isActive }) => isActive ? styles.active : ''}
+                    >
+                        Aufgabe 1
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/aufgabe-2">Aufgabe 2</Link>
+                    <NavLink
+                        to="/aufgabe-2"
+                        className={({ isActive }) => isActive ? styles.active : ''}
+                    >
+                        Präattentive Verarbeitung
+                    </NavLink>
                 </li>
             </ul>
         </nav>
     );
 }
+
 export default Navbar;

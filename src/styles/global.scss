@@ -10,12 +10,19 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 a {
   color: inherit;
   text-decoration: inherit;
 }
+
+p {
+  line-height: 140%;
+}
+
+
 
 body {
   overflow-x: hidden;
