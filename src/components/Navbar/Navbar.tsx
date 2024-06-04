@@ -32,6 +32,14 @@ const Navbar = () => {
                         Auswertung 2
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink
+                        to="/aufgabe-3"
+                        className={({ isActive }) => isActive ? styles.active : ''}
+                    >
+                        Aufgabe 3
+                    </NavLink>
+                </li>
             </ul>
         </nav>
     );

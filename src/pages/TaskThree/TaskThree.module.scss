@@ -1,0 +1,19 @@
+.TaskThree {
+  display: grid;
+  img {
+    height: 90vh;
+  }
+  &Button {
+    cursor: pointer;
+    all: unset;
+    text-align: center;
+    padding: 12px;
+    border-radius: 500px;
+    border: #66cc66 solid 2px;
+    &:hover {
+      cursor: pointer;
+
+      background-color: #66cc66;
+    }
+  }
+}

@@ -10,6 +10,7 @@ import ChartOne from "./components/TaskOne/ChartOne";
 import ChartTwo from "./components/TaskOne/ChartTwo";
 import ChartThree from "./components/TaskOne/ChartThree";
 import Auswertung from "./components/Auswertung/Auswertung";
+import TaskThree from "./pages/TaskThree/TaskThree";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                             <Route path="teil-3" element={<ChartThree />} />
                         </Route>
                         <Route path="aufgabe-2" element={<TaskTwo />} />
+                        <Route path="aufgabe-3" element={<TaskThree />} />
                         <Route path="auswertung-2" element={<Auswertung />} />
 
                     </Route>
