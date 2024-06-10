@@ -3,7 +3,7 @@ import './styles/global.scss';
 import Layout from "./components/Layout/Layout";
 import LandingPage from "./pages/LandingPage/LandingPage";
 
-import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import TaskOne from "./pages/TaskOne/TaskOne";
 import TaskTwo from "./pages/TaskTwo/TaskTwo";
 import ChartOne from "./components/TaskOne/ChartOne";
@@ -31,7 +31,6 @@ function App() {
                         <Route path="aufgabe-3" element={<TaskThree />} />
                         <Route path="aufgabe-3-2" element={<TaskThreeFinal />} />
                         <Route path="auswertung-2" element={<Auswertung />} />
-
                     </Route>
                 </Routes>
             </div>
