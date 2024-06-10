@@ -1,0 +1,59 @@
+.TaskThreeFinal {
+  padding: 16px;
+  &Container {
+    padding: 24px;
+    background-color: #2d3040;
+    display: grid;
+    grid-template-columns: 14% auto;
+    border-radius: 16px;
+  }
+
+  &Chart {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 90% auto;
+    padding: 24px;
+
+    &Settings{
+      display: flex;
+      gap: 24px;
+    }
+  }
+
+  &Cars {
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #252633;
+      border-radius: 50px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #66cc66;
+      border-radius: 50px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #9ce19c;
+    }
+    &List {
+      max-height: 80vh;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+      label {
+        display: flex;
+        justify-content: space-between;
+        padding-right: 16px;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+
+
+}
+
+
