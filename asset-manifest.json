@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/vc4-visualization/static/css/main.f7a78d9e.css",
-    "main.js": "/vc4-visualization/static/js/main.e4728f88.js",
-    "static/js/453.b6a706eb.chunk.js": "/vc4-visualization/static/js/453.b6a706eb.chunk.js",
+    "main.css": "/vc4-visualization/static/css/main.29ddd93b.css",
+    "main.js": "/vc4-visualization/static/js/main.61c37888.js",
+    "static/js/453.cb0702c3.chunk.js": "/vc4-visualization/static/js/453.cb0702c3.chunk.js",
     "static/media/InterVAR.ttf": "/vc4-visualization/static/media/InterVAR.853e01975d2783d9fa29.ttf",
     "static/media/colorshader.png": "/vc4-visualization/static/media/colorshader.28e6b3b5e7d6bf0771bf.png",
     "static/media/shader.png": "/vc4-visualization/static/media/shader.e68afaa97374e68e58c5.png",
@@ -22,14 +22,17 @@
     "static/media/shape_complex.png": "/vc4-visualization/static/media/shape_complex.55e0f41b84c917fdb253.png",
     "static/media/linelength.png": "/vc4-visualization/static/media/linelength.8b3506056e53b6866327.png",
     "static/media/line.png": "/vc4-visualization/static/media/line.dae868f69cf97499a561.png",
+    "static/media/us_car.svg": "/vc4-visualization/static/media/us_car.685199c672ed6c8a78d8df4edd76b7ab.svg",
     "static/media/logo.svg": "/vc4-visualization/static/media/logo.fd505633f0ff5669da73e67de54655e3.svg",
+    "static/media/eu_car.svg": "/vc4-visualization/static/media/eu_car.0217256dae861cb658034e3c1d20bd20.svg",
+    "static/media/jp_car.svg": "/vc4-visualization/static/media/jp_car.1f801a3562c9731477ccdcf182b2b678.svg",
     "index.html": "/vc4-visualization/index.html",
-    "main.f7a78d9e.css.map": "/vc4-visualization/static/css/main.f7a78d9e.css.map",
-    "main.e4728f88.js.map": "/vc4-visualization/static/js/main.e4728f88.js.map",
-    "453.b6a706eb.chunk.js.map": "/vc4-visualization/static/js/453.b6a706eb.chunk.js.map"
+    "main.29ddd93b.css.map": "/vc4-visualization/static/css/main.29ddd93b.css.map",
+    "main.61c37888.js.map": "/vc4-visualization/static/js/main.61c37888.js.map",
+    "453.cb0702c3.chunk.js.map": "/vc4-visualization/static/js/453.cb0702c3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f7a78d9e.css",
-    "static/js/main.e4728f88.js"
+    "static/css/main.29ddd93b.css",
+    "static/js/main.61c37888.js"
   ]
 }
