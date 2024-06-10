@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import styles from './TaskOne.module.scss';
 import React from "react";
-import {Link, NavLink, Outlet} from "react-router-dom";
+import {NavLink, Outlet} from "react-router-dom";
 
 const TaskOne = () => {
     return (

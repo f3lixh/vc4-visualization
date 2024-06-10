@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import styles from './TaskThreeFinal.module.scss';
 import React, { useState } from "react";
 import data from '../../data/data.json';

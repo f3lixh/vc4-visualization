@@ -38,7 +38,7 @@ const ImgViewTimer: React.FC<Props> = ({ img, task, index, state, onChange, cool
             setVisible(false);
             setCountdown(cooldown);
         }
-    }, [state, index]);
+    }, [state, index, cooldown]);
 
     useEffect(() => {
         if(!visible) return;
@@ -65,7 +65,7 @@ const ImgViewTimer: React.FC<Props> = ({ img, task, index, state, onChange, cool
                     if(onChange) onChange(value);
                     console.log(value);
                 }
-    }, [startReaction, endReaction, finalReaction]);
+    }, [startReaction, endReaction, finalReaction, onChange]);
 
 
     return (

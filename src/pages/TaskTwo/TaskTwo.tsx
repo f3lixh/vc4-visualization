@@ -1,8 +1,6 @@
 import classNames from 'classnames';
-import oldstyles from '../TaskOne/TaskOne.module.scss';
 import styles from './TaskTwo.module.scss';
-import React, {useEffect, useState} from "react";
-import {Link, NavLink, Outlet} from "react-router-dom";
+import React, {useState} from "react";
 
 import hue from '../../img/a2/hue.png';
 import opacity from '../../img/a2/opacity.png';
@@ -29,6 +27,7 @@ import ImgTimerView from '../../components/ImgTimerView/ImgTimerView';
 const TaskOne = () => {
     const [currentTask, setCurrentTask] = useState<number>(0);
     const [reactionTime, setReactionTime] = useState<number>(0);
+    // eslint-disable-next-line
     const [cooldown, setCooldown] = useState<number>(8);
 
 
