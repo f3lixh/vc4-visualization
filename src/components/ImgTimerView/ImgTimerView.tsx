@@ -11,8 +11,6 @@ interface Props {
     onChange: (n: number) => void;
 }
 
-const INITIAL_COUNTDOWN = 5;
-
 const ImgViewTimer: React.FC<Props> = ({ img, task, index, state, onChange, cooldown }) => {
     const [visible, setVisible] = useState(false);
     const [countdown, setCountdown] = useState(cooldown);
