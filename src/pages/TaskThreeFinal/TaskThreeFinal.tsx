@@ -107,7 +107,7 @@ const CarPlot: React.FC = () => {
         <div className={styles.TaskThreeFinal}>
             <div className={styles.TaskThreeFinalContainer}>
                 <div className={styles.TaskThreeFinalCars}>
-                    <h2>Cars</h2>
+                    <h2>Carss</h2>
                     <div className={styles.TaskThreeFinalCarsList}>
                         {data.map((car, index) => (
                             <label key={`${car.Model}-${index}`}>
