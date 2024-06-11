@@ -27,7 +27,7 @@ const getColor = (value: number, min: number, max: number) => {
 };
 
 const CustomIcon: React.FC<CustomIconProps> = (props) => {
-    const { cx, cy, payload, iconMode, x, y } = props;
+    const { cx, cy, payload, iconMode, y } = props;
     // @ts-ignore
     const icon = originToIcon[payload.Herkunft];
     const iconSize = 24;
