@@ -1,4 +1,10 @@
 .TaskThreeFinal {
+  &Checkbox {
+    input:checked ~ .checkmark {
+      background-color: #002B4E;
+    }
+  }
+
   padding: 16px;
   &Container {
     padding: 24px;
@@ -24,7 +30,32 @@
     }
   }
 
-  &Cars {
+  &Sidebar {
+    max-height: 80vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 50%);
+  gap: 12px;
+    &Container {
+      border-radius: 16px;
+      padding: 16px;
+      background-color: #2a2c3a;
+      display: flex;
+      flex-direction: column;
+      &List {
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        label {
+          display: flex;
+          justify-content: space-between;
+          padding-right: 16px;
+          text-transform: capitalize;
+        }
+      }
+    }
+
+
     ::-webkit-scrollbar {
       width: 10px;
     }
@@ -42,17 +73,17 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #9ce19c;
     }
+  }
+
+  &Cars {
+    gap: 20px;
+
+
+
     &List {
-      max-height: 80vh;
-      overflow-y: scroll;
-      display: flex;
-      flex-direction: column;
-      label {
-        display: flex;
-        justify-content: space-between;
-        padding-right: 16px;
-        text-transform: capitalize;
-      }
+      height: 50%;
+
+
     }
   }
 

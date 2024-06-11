@@ -10,7 +10,7 @@ const CarPlot: React.FC = () => {
     const [selectedXAxis, setSelectedXAxis] = useState<string>('Hubraum');
     const [selectedYAxis, setSelectedYAxis] = useState<string>('PS');
     const [selectedCars, setSelectedCars] = useState<string[]>(data.map((car, index) => `${car.Model}-${index}`));
-    const [selectedManufacturer, setSelectedManufacturer] = useState<string>('All');
+    const [selectedManufacturers, setSelectedManufacturers] = useState<string[]>(data.map((car, index) => `${car.Hersteller}`));
     const [selectedOrigin, setSelectedOrigin] = useState<string>('All');
     const [iconMode, setIconMode] = useState<'origin' | 'colored'>('origin');
 
@@ -51,8 +51,11 @@ const CarPlot: React.FC = () => {
         );
     };
 
-    const handleManufacturerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedManufacturer(e.target.value);
+    const handleManufacturerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setSelectedManufacturers(prev =>
+            prev.includes(value) ? prev.filter(manufacturer => manufacturer !== value) : [...prev, value]
+        );
     };
 
     const handleOriginChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -61,7 +64,7 @@ const CarPlot: React.FC = () => {
 
     const filteredData = data
         .filter(car => selectedCars.includes(`${car.Model}-${data.indexOf(car)}`))
-        .filter(car => selectedManufacturer === 'All' || car.Hersteller === selectedManufacturer)
+        .filter(car => selectedManufacturers.length === 0 || selectedManufacturers.includes(car.Hersteller))
         .filter(car => selectedOrigin === 'All' || car.Herkunft === selectedOrigin)
         // @ts-ignore
         .filter(car => car[selectedXAxis] !== 'NA' && car[selectedYAxis] !== 'NA');
@@ -98,22 +101,42 @@ const CarPlot: React.FC = () => {
     return (
         <div className={styles.TaskThreeFinal}>
             <div className={styles.TaskThreeFinalContainer}>
-                <div className={styles.TaskThreeFinalCars}>
-                    <h2>Cars</h2>
-                    <div className={styles.TaskThreeFinalCarsList}>
-                        {data.map((car, index) => (
-                            <label key={`${car.Model}-${index}`}>
-                                {`${car.Hersteller} - ${car.Model}`}
-                                <input
-                                    type="checkbox"
-                                    value={`${car.Model}-${index}`}
-                                    checked={selectedCars.includes(`${car.Model}-${index}`)}
-                                    onChange={handleCarChange}
-                                />
-                            </label>
-                        ))}
+                <div className={styles.TaskThreeFinalSidebar}>
+                 <div className={styles.TaskThreeFinalSidebarContainer}>
+                     <h2>Cars</h2>
+                     <div className={styles.TaskThreeFinalSidebarContainerList}>
+                         {data.map((car, index) => (
+                             <label key={`${car.Model}-${index}`}>
+                                 {`${car.Hersteller} - ${car.Model}`}
+                                 <input
+                                     className={styles.TaskThreeFinalCheckbox}
+                                     type="checkbox"
+                                     value={`${car.Model}-${index}`}
+                                     checked={selectedCars.includes(`${car.Model}-${index}`)}
+                                     onChange={handleCarChange}
+                                 />
+                             </label>
+                         ))}
+                     </div>
+                 </div>
+                    <div className={styles.TaskThreeFinalSidebarContainer}>
+                    <h2>Manufacturers</h2>
+                        <div className={styles.TaskThreeFinalSidebarContainerList}>
+                            {uniqueManufacturers.map((manufacturer, index) => (
+                                <label key={`${manufacturer}-${index}`}>
+                                    {manufacturer}
+                                    <input
+                                        type="checkbox"
+                                        value={manufacturer}
+                                        checked={selectedManufacturers.includes(manufacturer)}
+                                        onChange={handleManufacturerChange}
+                                    />
+                                </label>
+                            ))}
+                    </div>
                     </div>
                 </div>
+
                 <div className={styles.TaskThreeFinalChart}>
                     <ResponsiveContainer>
                         <ScatterChart width={window.innerWidth * 0.8} height={500} margin={{ top: 15, right: 15, bottom: 15, left: 15 }}>
@@ -150,17 +173,6 @@ const CarPlot: React.FC = () => {
                                 {['Verbrauch', 'Zylinder', 'Hubraum', 'PS', 'Gewicht', 'Beschleunigung', 'Baujahr'].map(prop => (
                                     <option key={prop} value={prop} disabled={prop === selectedXAxis}>
                                         {prop}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div>
-                            <h3>Manufacturer</h3>
-                            <select value={selectedManufacturer} onChange={handleManufacturerChange}>
-                                <option value="All">All</option>
-                                {uniqueManufacturers.map(manufacturer => (
-                                    <option key={manufacturer} value={manufacturer}>
-                                        {manufacturer}
                                     </option>
                                 ))}
                             </select>
