@@ -85,6 +85,26 @@ const CarPlot: React.FC = () => {
         return [min, max];
     };
 
+    const handleClearModels = () => {
+        if(selectedCars.length === 0) {
+            setSelectedCars(data.map((car, index) => `${car.Model}-${index}`))
+        } else {
+            setSelectedCars([]);
+        }
+
+    }
+
+    const handleClearManufacturers = () => {
+        if(selectedManufacturers.length === 0) {
+            setSelectedManufacturers(data.map((car, index) => `${car.Hersteller}`))
+        } else {
+            setSelectedManufacturers([]);
+        }
+
+    }
+
+
+
     function compare(a: Car, b: Car) {
         if (a.Hersteller < b.Hersteller) {
             return -1;
@@ -98,12 +118,13 @@ const CarPlot: React.FC = () => {
     // @ts-ignore
     data.sort(compare);
 
+
     return (
         <div className={styles.TaskThreeFinal}>
             <div className={styles.TaskThreeFinalContainer}>
                 <div className={styles.TaskThreeFinalSidebar}>
                  <div className={styles.TaskThreeFinalSidebarContainer}>
-                     <h2>Cars</h2>
+                     <h2>Model</h2>
                      <div className={styles.TaskThreeFinalSidebarContainerList}>
                          {data.map((car, index) => (
                              <label key={`${car.Model}-${index}`}>
@@ -120,7 +141,7 @@ const CarPlot: React.FC = () => {
                      </div>
                  </div>
                     <div className={styles.TaskThreeFinalSidebarContainer}>
-                    <h2>Manufacturers</h2>
+                    <h2>Hersteller</h2>
                         <div className={styles.TaskThreeFinalSidebarContainerList}>
                             {uniqueManufacturers.map((manufacturer, index) => (
                                 <label key={`${manufacturer}-${index}`}>
@@ -158,7 +179,7 @@ const CarPlot: React.FC = () => {
                     <Modal isOpen={isModalOpen} onClose={handleCloseModal} data={modalData} />
                     <div className={styles.TaskThreeFinalChartSettings}>
                         <div>
-                            <h3>X-Axis Property</h3>
+                            <h3>X-Achse</h3>
                             <select value={selectedXAxis} onChange={handleXAxisChange}>
                                 {['Verbrauch', 'Zylinder', 'Hubraum', 'PS', 'Gewicht', 'Beschleunigung', 'Baujahr'].map(prop => (
                                     <option key={prop} value={prop} disabled={prop === selectedYAxis}>
@@ -168,7 +189,7 @@ const CarPlot: React.FC = () => {
                             </select>
                         </div>
                         <div>
-                            <h3>Y-Axis Property</h3>
+                            <h3>Y-Achse</h3>
                             <select value={selectedYAxis} onChange={handleYAxisChange}>
                                 {['Verbrauch', 'Zylinder', 'Hubraum', 'PS', 'Gewicht', 'Beschleunigung', 'Baujahr'].map(prop => (
                                     <option key={prop} value={prop} disabled={prop === selectedXAxis}>
@@ -178,9 +199,9 @@ const CarPlot: React.FC = () => {
                             </select>
                         </div>
                         <div>
-                            <h3>Origin</h3>
+                            <h3>Herkunft</h3>
                             <select value={selectedOrigin} onChange={handleOriginChange}>
-                                <option value="All">All</option>
+                                <option value="All">Alle</option>
                                 {uniqueOrigins.map(origin => (
                                     <option key={origin} value={origin}>
                                         {origin}
@@ -191,9 +212,14 @@ const CarPlot: React.FC = () => {
                         <div>
                             <h3>Icon Mode</h3>
                             <select value={iconMode} onChange={(e) => setIconMode(e.target.value as 'origin' | 'colored')}>
-                                <option value="origin">Origin Icon</option>
-                                <option value="colored">Colored Icon</option>
+                                <option value="origin">Herkunft Icon</option>
+                                <option value="colored">Farbiges Icon</option>
                             </select>
+                        </div>
+                        <div>
+                            <h3>Einstellungen</h3>
+                            <button onClick={() => handleClearModels()}>{selectedCars.length === 0 ? "Model einblenden" : "Model ausblenden"}</button>
+                            <button onClick={() => handleClearManufacturers()}>{selectedManufacturers.length === 0 ? "Hersteller einblenden" : "Hersteller ausblenden"}</button>
                         </div>
                     </div>
                 </div>

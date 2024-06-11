@@ -53,3 +53,27 @@ input::file-selector-button {
   border: none;
   border-radius: 50px;
 }
+
+input[type="checkbox"]:not(:checked) {
+  outline: none;
+  background-color: transparent;
+}
+
+input:checked {
+  outline: none;
+  accent-color: #5fb2f8;
+}
+
+button {
+  background-color: #2a2c3a;
+  font-family: inherit;
+  color: white;
+  padding: 8px 20px;
+  outline: none;
+  border: 2px solid #66cc66;
+  border-radius: 80px;
+  cursor: pointer;
+  &:hover {
+    background-color: #66cc66;
+  }
+}

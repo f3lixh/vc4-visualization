@@ -1,0 +1,61 @@
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #00000055;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.Modal {
+  width: 20%;
+  height: 50%;
+  background-color: #252633;
+  border: 2px solid #2d3040;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  filter: drop-shadow(0px 0px 20px #00000055);
+  h1 {
+    text-transform: capitalize;
+    margin-bottom: 24px;
+  }
+
+  th {
+    font-size: 24px;
+  }
+  th:nth-child(1) {
+    text-align: left;
+  }
+  td, th {
+    padding: 12px 18px;
+    text-transform: capitalize;
+  }
+  table {
+    width: 100%;
+    border-radius: 8px;
+    background-color: #2a2c3a;
+  }
+  tbody {
+    tr:nth-child(odd) {
+      background-color: #2d3040;
+    }
+    tr:hover {
+      background-color: #66cc66;
+      cursor: pointer;
+    }
+  }
+
+}
+
+.Button {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  cursor: pointer;
+}
+

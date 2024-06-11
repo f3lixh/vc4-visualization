@@ -43,7 +43,7 @@ const CustomIcon: React.FC<CustomIconProps> = (props) => {
                 width={iconSize}
                 height={iconSize}
                 href={icon}
-
+                style={{cursor: "pointer"}}
             />
         );
     }
@@ -53,7 +53,7 @@ const CustomIcon: React.FC<CustomIconProps> = (props) => {
 
     return (
         // @ts-ignore
-        <foreignObject x={cx - iconSize / 2} y={cy - iconSize / 2} width={iconSize} height={iconSize}>
+        <foreignObject   x={cx - iconSize / 2} y={cy - iconSize / 2} width={iconSize} height={iconSize}>
             <CustomSVGIcon color={color} />
         </foreignObject>
     );

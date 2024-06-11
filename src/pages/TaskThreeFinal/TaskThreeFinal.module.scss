@@ -1,8 +1,6 @@
 .TaskThreeFinal {
   &Checkbox {
-    input:checked ~ .checkmark {
-      background-color: #002B4E;
-    }
+
   }
 
   padding: 16px;
@@ -27,6 +25,8 @@
     &Settings{
       display: flex;
       gap: 24px;
+      > div {
+      }
     }
   }
 
@@ -102,6 +102,11 @@
       background-color: #252633;
 
     }
+  }
+
+  button {
+    margin-right: 20px;
+
   }
 
   select option {
