@@ -124,7 +124,7 @@ const CarPlot: React.FC = () => {
             <div className={styles.TaskThreeFinalContainer}>
                 <div className={styles.TaskThreeFinalSidebar}>
                  <div className={styles.TaskThreeFinalSidebarContainer}>
-                     <h2>Model</h2>
+                     <h2>Modell</h2>
                      <div className={styles.TaskThreeFinalSidebarContainerList}>
                          {data.map((car, index) => (
                              <label key={`${car.Model}-${index}`}>
@@ -218,7 +218,7 @@ const CarPlot: React.FC = () => {
                         </div>
                         <div>
                             <h3>Einstellungen</h3>
-                            <button onClick={() => handleClearModels()}>{selectedCars.length === 0 ? "Model einblenden" : "Model ausblenden"}</button>
+                            <button onClick={() => handleClearModels()}>{selectedCars.length === 0 ? "Modell einblenden" : "Modell ausblenden"}</button>
                             <button onClick={() => handleClearManufacturers()}>{selectedManufacturers.length === 0 ? "Hersteller einblenden" : "Hersteller ausblenden"}</button>
                         </div>
                     </div>
