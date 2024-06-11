@@ -18,10 +18,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, data }) => {
     const convertToMetric = (data: any) => {
         return {
             ...data,
-            Verbrauch: (data.Verbrauch * 0.425144).toFixed(2), // MPG to L/100km
+            Verbrauch: (235.214583 / data.Verbrauch).toFixed(2), // MPG to L/100km
             Hubraum: (data.Hubraum * 16.3871).toFixed(2), // cubic inches to cubic cm
             Beschleunigung: (data.Beschleunigung * 1.60934).toFixed(2), // mph to km/h
-            Gewicht: (data.Gewicht * 0.453592).toFixed(2) // lbs to kg
+            Gewicht: (data.Gewicht / 2.205).toFixed(2) // lbs to kg
         };
     };
 
