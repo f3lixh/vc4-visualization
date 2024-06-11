@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import data from '../../data/data.json';
 import {ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
 import CustomIcon from './CustomIcon';
+import Modal from "../../components/Modal/Modal";
 
 interface Car {
     Model: string;
@@ -26,6 +27,19 @@ const CarPlot: React.FC = () => {
 
     const uniqueManufacturers = Array.from(new Set(data.map(car => car.Hersteller)));
     const uniqueOrigins = Array.from(new Set(data.map(car => car.Herkunft)));
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalData, setModalData] = useState<any>('');
+
+    const handleOpenModal = (data: any) => {
+        console.log(data)
+        setModalData(data);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
 
     const handleXAxisChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedXAxis(e.target.value);
@@ -84,11 +98,6 @@ const CarPlot: React.FC = () => {
         return [min, max];
     };
 
-    // Event-Handler für Klick auf Scatter-Punkte
-    const handleScatterClick = (data: any) => {
-        console.log(data.payload);
-    };
-
     function compare( a: Car, b: Car ) {
         if ( a.Hersteller < b.Hersteller ){
             return -1;
@@ -133,12 +142,13 @@ const CarPlot: React.FC = () => {
                                name={`${selectedXAxis} vs ${selectedYAxis}`}
                                data={filteredData}
                                // @ts-ignore
-                               shape={(props) => <CustomIcon {...props} />}
+                               shape={(props) => <CustomIcon  {...props} />}
                                isAnimationActive={false}
-                               onClick={handleScatterClick}
+                               onClick={(props) => handleOpenModal(props)}
                            />
                        </ScatterChart>
                    </ResponsiveContainer>
+                    <Modal isOpen={isModalOpen} onClose={handleCloseModal} data={modalData} />
                     <div className={styles.TaskThreeFinalChartSettings}>
                         <div>
                             <h3>X-Axis Property</h3>
