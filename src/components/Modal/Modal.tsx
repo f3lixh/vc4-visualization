@@ -44,11 +44,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, data }) => {
                         </tr>
                         <tr>
                             <td>Verbrauch</td>
-                            <td>{metricData.Verbrauch} {isMetric ? 'L/100km' : 'MPG'}</td>
+                            <td>{metricData.Verbrauch} <span>{isMetric ? 'L/100km' : 'MPG'}</span></td>
                         </tr>
                         <tr>
                             <td>Hubraum</td>
-                            <td>{metricData.Hubraum} {isMetric ? 'cm³' : 'in³'}</td>
+                            <td>{metricData.Hubraum} <span>{isMetric ? 'cm³' : 'in³'}</span></td>
                         </tr>
                         <tr>
                             <td>PS</td>
@@ -60,7 +60,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, data }) => {
                         </tr>
                         <tr>
                             <td>Beschleunigung</td>
-                            <td>{metricData.Beschleunigung} {isMetric ? 'km/h' : 'mph'}</td>
+                            <td>{metricData.Beschleunigung} <span>{isMetric ? 'km/h' : 'mph'}</span></td>
                         </tr>
                         <tr>
                             <td>Zylinder</td>
@@ -68,7 +68,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, data }) => {
                         </tr>
                         <tr>
                             <td>Gewicht</td>
-                            <td>{metricData.Gewicht} {isMetric ? 'kg' : 'lbs'}</td>
+                            <td>{metricData.Gewicht} <span>{isMetric ? 'kg' : 'lbs'}</span></td>
                         </tr>
                         </tbody>
                     </table>
