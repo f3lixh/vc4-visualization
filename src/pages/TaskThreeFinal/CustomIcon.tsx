@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ScatterProps } from 'recharts';
 import jp from "../../img/a32/jp_car.svg"
 import us from "../../img/a32/us_car.svg"
 import eu from "../../img/a32/eu_car.svg"
+import CustomSVGIcon from "../../components/CustomSVGIcon/CustomSVGIcon";
 
 
 const originToIcon = {
@@ -11,32 +12,50 @@ const originToIcon = {
     Japanese: jp
 };
 
-const CustomIcon: React.FC<ScatterProps & { payload: any }> = (props) => {
-    const { cx, cy, payload } = props;
+interface CustomIconProps extends ScatterProps {
+    payload: any;
+    iconMode: 'origin' | 'colored';
+    x: number;
+    y: number;
+}
+
+const getColor = (value: number, min: number, max: number) => {
+    const ratio = (value - min) / (max - min);
+    const red = Math.min(255, Math.floor(255 * ratio));
+    const green = Math.min(255, Math.floor(255 * (1 - ratio)));
+    return `rgb(${red},${green},0)`;
+};
+
+const CustomIcon: React.FC<CustomIconProps> = (props) => {
+    const { cx, cy, payload, iconMode, x, y } = props;
     // @ts-ignore
     const icon = originToIcon[payload.Herkunft];
-    const [focused, setFocused] = useState<boolean>(false);
     const iconSize = 24;
 
 
-    const handleClick = () => {
-        setFocused(true)
+    if (iconMode === 'origin' && icon) {
+        return (
+            <image
+                // @ts-ignore
+                x={cx - iconSize/2}
+                // @ts-ignore
+                y={cy - iconSize/2}
+                width={iconSize}
+                height={iconSize}
+                href={icon}
+
+            />
+        );
     }
 
-    if (!icon) return null;
+    // @ts-ignore
+    const color = getColor(payload[y], props.yAxis.originalDomain[0], props.yAxis.originalDomain[1]);
 
     return (
-        <image
-            // @ts-ignore
-            x={cx - iconSize/2}
-            // @ts-ignore
-            y={cy - iconSize/2}
-            width={iconSize}
-            height={iconSize}
-            href={icon}
-            style={{zIndex: focused ? 9999 : "inherit"}}
-            onClick={() => handleClick()}
-        />
+        // @ts-ignore
+        <foreignObject x={cx - iconSize / 2} y={cy - iconSize / 2} width={iconSize} height={iconSize}>
+            <CustomSVGIcon color={color} />
+        </foreignObject>
     );
 };
 

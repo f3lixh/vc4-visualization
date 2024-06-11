@@ -1,22 +1,10 @@
 import styles from './TaskThreeFinal.module.scss';
 import React, { useState } from "react";
 import data from '../../data/data.json';
-import {ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import CustomIcon from './CustomIcon';
 import Modal from "../../components/Modal/Modal";
-
-interface Car {
-    Model: string;
-    Hersteller: string;
-    Verbrauch: number;
-    Zylinder: number;
-    Hubraum: number;
-    PS: number;
-    Gewicht: number;
-    Beschleunigung: number;
-    Baujahr: number;
-    Herkunft: string;
-}
+import Car from "../../types/Car";
 
 const CarPlot: React.FC = () => {
     const [selectedXAxis, setSelectedXAxis] = useState<string>('Hubraum');
@@ -24,6 +12,7 @@ const CarPlot: React.FC = () => {
     const [selectedCars, setSelectedCars] = useState<string[]>(data.map((car, index) => `${car.Model}-${index}`));
     const [selectedManufacturer, setSelectedManufacturer] = useState<string>('All');
     const [selectedOrigin, setSelectedOrigin] = useState<string>('All');
+    const [iconMode, setIconMode] = useState<'origin' | 'colored'>('origin');
 
     const uniqueManufacturers = Array.from(new Set(data.map(car => car.Hersteller)));
     const uniqueOrigins = Array.from(new Set(data.map(car => car.Herkunft)));
@@ -75,22 +64,17 @@ const CarPlot: React.FC = () => {
         .filter(car => selectedManufacturer === 'All' || car.Hersteller === selectedManufacturer)
         .filter(car => selectedOrigin === 'All' || car.Herkunft === selectedOrigin)
         // @ts-ignore
-
         .filter(car => car[selectedXAxis] !== 'NA' && car[selectedYAxis] !== 'NA');
 
-    // Funktion zur Bestimmung des Bereichs der Y-Achse
     const getYAxisDomain = () => {
         // @ts-ignore
-
         const values = filteredData.map(car => car[selectedYAxis]);
         const min = Math.min(...values);
         const max = Math.max(...values);
         return [min, max];
     };
 
-    // Funktion zur Bestimmung des Bereichs der X-Achse
     const getXAxisDomain = () => {
-
         // @ts-ignore
         const values = filteredData.map(car => car[selectedXAxis]);
         const min = Math.min(...values);
@@ -98,24 +82,24 @@ const CarPlot: React.FC = () => {
         return [min, max];
     };
 
-    function compare( a: Car, b: Car ) {
-        if ( a.Hersteller < b.Hersteller ){
+    function compare(a: Car, b: Car) {
+        if (a.Hersteller < b.Hersteller) {
             return -1;
         }
-        if ( a.Hersteller > b.Hersteller ){
+        if (a.Hersteller > b.Hersteller) {
             return 1;
         }
         return 0;
     }
 
     // @ts-ignore
-    data.sort( compare );
+    data.sort(compare);
 
     return (
         <div className={styles.TaskThreeFinal}>
             <div className={styles.TaskThreeFinalContainer}>
                 <div className={styles.TaskThreeFinalCars}>
-                    <h2>Carss</h2>
+                    <h2>Cars</h2>
                     <div className={styles.TaskThreeFinalCarsList}>
                         {data.map((car, index) => (
                             <label key={`${car.Model}-${index}`}>
@@ -131,23 +115,23 @@ const CarPlot: React.FC = () => {
                     </div>
                 </div>
                 <div className={styles.TaskThreeFinalChart}>
-                   <ResponsiveContainer>
-                       <ScatterChart width={window.innerWidth*0.8} height={500} margin={{ top: 15, right: 15, bottom: 15, left: 15 }}>
-                           <CartesianGrid vertical={false} />
-                           <XAxis type="number" dataKey={selectedXAxis} domain={getXAxisDomain()} name={selectedXAxis} />
-                           <YAxis type="number" dataKey={selectedYAxis} domain={getYAxisDomain()} name={selectedYAxis} />
-                           <Tooltip />
-                           <Legend />
-                           <Scatter
-                               name={`${selectedXAxis} vs ${selectedYAxis}`}
-                               data={filteredData}
-                               // @ts-ignore
-                               shape={(props) => <CustomIcon  {...props} />}
-                               isAnimationActive={false}
-                               onClick={(props) => handleOpenModal(props)}
-                           />
-                       </ScatterChart>
-                   </ResponsiveContainer>
+                    <ResponsiveContainer>
+                        <ScatterChart width={window.innerWidth * 0.8} height={500} margin={{ top: 15, right: 15, bottom: 15, left: 15 }}>
+                            <CartesianGrid vertical={false} />
+                            <XAxis type="number" dataKey={selectedXAxis} domain={getXAxisDomain()} name={selectedXAxis} />
+                            <YAxis type="number" dataKey={selectedYAxis} domain={getYAxisDomain()} name={selectedYAxis} />
+                            <Tooltip />
+                            <Legend />
+                            <Scatter
+                                name={`${selectedXAxis} vs ${selectedYAxis}`}
+                                data={filteredData}
+                                // @ts-ignore
+                                shape={(props) => <CustomIcon {...props} iconMode={iconMode} x={selectedXAxis} y={selectedYAxis} />}
+                                isAnimationActive={false}
+                                onClick={(props) => handleOpenModal(props)}
+                            />
+                        </ScatterChart>
+                    </ResponsiveContainer>
                     <Modal isOpen={isModalOpen} onClose={handleCloseModal} data={modalData} />
                     <div className={styles.TaskThreeFinalChartSettings}>
                         <div>
@@ -192,13 +176,16 @@ const CarPlot: React.FC = () => {
                                 ))}
                             </select>
                         </div>
+                        <div>
+                            <h3>Icon Mode</h3>
+                            <select value={iconMode} onChange={(e) => setIconMode(e.target.value as 'origin' | 'colored')}>
+                                <option value="origin">Origin Icon</option>
+                                <option value="colored">Colored Icon</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
     );
 };
