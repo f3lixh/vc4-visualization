@@ -1,7 +1,17 @@
 import styles from './TaskThreeFinal.module.scss';
 import React, { useState } from "react";
 import data from '../../data/data.json';
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {
+    ScatterChart,
+    Scatter,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend,
+    ResponsiveContainer,
+    Label
+} from 'recharts';
 import CustomIcon from './CustomIcon';
 import Modal from "../../components/Modal/Modal";
 import Car from "../../types/Car";
@@ -160,14 +170,18 @@ const CarPlot: React.FC = () => {
 
                 <div className={styles.TaskThreeFinalChart}>
                     <ResponsiveContainer>
-                        <ScatterChart width={window.innerWidth * 0.8} height={500} margin={{ top: 15, right: 15, bottom: 15, left: 15 }}>
+                        <ScatterChart width={window.innerWidth * 0.8} height={500} margin={{ top: 15, right: 15, bottom: 24, left: 15 }}>
                             <CartesianGrid vertical={false} />
-                            <XAxis type="number" dataKey={selectedXAxis} domain={getXAxisDomain()} name={selectedXAxis} />
-                            <YAxis type="number" dataKey={selectedYAxis} domain={getYAxisDomain()} name={selectedYAxis} />
+                            <XAxis type="number" dataKey={selectedXAxis} domain={getXAxisDomain()} name={selectedXAxis}>
+                                <Label  position={"bottom"}>{selectedXAxis}</Label>
+                            </XAxis>
+                            <YAxis type="number" dataKey={selectedYAxis} domain={getYAxisDomain()} name={selectedYAxis}>
+                                <Label value={selectedYAxis} angle={-90} position={"left"} offset={0}></Label>
+                            </YAxis>
                             <Tooltip />
                             <Legend />
                             <Scatter
-                                name={`${selectedXAxis} vs ${selectedYAxis}`}
+                                legendType={"none"}
                                 data={filteredData}
                                 // @ts-ignore
                                 shape={(props) => <CustomIcon {...props} iconMode={iconMode} x={selectedXAxis} y={selectedYAxis} />}
